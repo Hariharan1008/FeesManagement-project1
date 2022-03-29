@@ -15,7 +15,8 @@ public class FindAllMyTickets {
 		if(tickets!=null)
 		{
 			for (Tickets ticket : tickets) {
-				System.out.println("Your Query     : "+ ticket.getMyQuery());
+				System.out.println("Query          : "+ ticket.getMyQuery());
+				System.out.println("Raised By      : "+ ticket.getName());
 				System.out.println("Created on     : "+ ticket.getCreatedOn());
 				System.out.println("Ticket status  : "+ ticket.getTicketStatus());
 				System.out.println();

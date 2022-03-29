@@ -9,9 +9,11 @@ public class TicketDetailsUsingId {
 		Tickets tickets=FindTicketUsingIdDao.usingTicketId(ticketId);
 		if(tickets!=null)
 		{
-			System.out.println("Your Query      : " + tickets.getMyQuery());
+			
+			System.out.println("Query           : " + tickets.getMyQuery());
+			System.out.println("Raised by       : " + tickets.getName() );
 			System.out.println("Created on      : " + tickets.getCreatedOn());
-			System.out.println("Query Status    : "+ tickets.getTicketStatus());
+			System.out.println("Query Status    : " + tickets.getTicketStatus());
 		}
 		else
 		{

@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.feesmanagement.model.ResultApp;
 import com.feesmanagement.model.Transaction;
 
 public class MyTransactionDetailsDao {

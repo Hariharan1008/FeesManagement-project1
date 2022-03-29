@@ -7,32 +7,32 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import com.feesmanagement.model.Tickets;
 
-public class MyTicketDetailsDao {
-	public static List<Tickets> findAllTickets(String email) throws ClassNotFoundException, SQLException
+public class TicketUpdationDao {
+	public static List<Tickets> findAllTickets() throws ClassNotFoundException, SQLException
 	{
 		List<Tickets> list=new ArrayList<Tickets>();
 		Connection connection=ConnectionUtil.databaseConnection();
 		PreparedStatement statement;
 		ResultSet result=null;
-		String query="SELECT * FROM my_ticket_using_email where email=?";
+		String query="select id,Queries,Created_On,Ticket_Status from Tickets";
 		statement=connection.prepareStatement(query);
-		statement.setString(1, email);
 		result=statement.executeQuery();
 		Tickets ticket=null;
+		int id=0;
 		String myQuery=null;
 		Date date=null;
 		String status=null;
-		String name=null;
 		while(result.next())
 		{
 			ticket=new Tickets();
+			id=result.getInt("id");
 			myQuery=result.getString("Queries");
 			date=result.getDate("Created_On");
 			status=result.getString("Ticket_Status");
-			name=result.getString("Name");
-			ticket.setName(name);
+			ticket.setTicketId(id);
 			ticket.setMyQuery(myQuery);
 			ticket.setCreatedOn(date);
 			ticket.setTicketStatus(status);
@@ -41,5 +41,16 @@ public class MyTicketDetailsDao {
 		
 		return list;
 	}
+	public static void updateTicket(int id) throws ClassNotFoundException, SQLException
+	{
+		Connection connection=ConnectionUtil.databaseConnection();
+		PreparedStatement statement=null;
+		String query="update Tickets set Ticket_Status=? where id=?";
+		statement=connection.prepareStatement(query);
+		statement.setString(1,"Resolved");
+		statement.setInt(2,id);
+		int rows = statement.executeUpdate();
+	}
+
 
 }

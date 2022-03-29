@@ -13,7 +13,7 @@ public class FindTicketUsingIdDao {
 	{
 		Connection connection=ConnectionUtil.databaseConnection();
 		PreparedStatement statement=null;
-		String qurey="select Queries,Ticket_Status,Created_On from Tickets where Ticket_Id=?";
+		String qurey="SELECT * FROM my_ticket_using_id WHERE Ticket_Id=?";
 		statement=connection.prepareStatement(qurey);
 		statement.setInt(1, ticketId);
 		ResultSet result=statement.executeQuery();
@@ -21,12 +21,15 @@ public class FindTicketUsingIdDao {
 		Date date=null;
 		Tickets ticket=null;
 		String ticketStatus=null;
+		String name=null;
 		if(result.next())
 		{
 			ticket=new Tickets();
+			name=result.getString("Name");
 			myQuery=result.getString("Queries");
 			date=result.getDate("Created_On");
 			ticketStatus=result.getString("Ticket_Status");
+			ticket.setName(name);
 			ticket.setMyQuery(myQuery);
 			ticket.setCreatedOn(date);
 			ticket.setTicketStatus(ticketStatus);

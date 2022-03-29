@@ -3,6 +3,20 @@ package com.feesmanagement.model;
 import java.sql.Date;
 
 public class Tickets {
+	private String name;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	private int ticketId;
+	public int getTicketId() {
+		return ticketId;
+	}
+	public void setTicketId(int ticketId) {
+		this.ticketId = ticketId;
+	}
 	private String myQuery;
 	private Date createdOn;
 	private String email;
