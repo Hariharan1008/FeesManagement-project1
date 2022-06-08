@@ -35,9 +35,9 @@ public class FeesStructureDao {
 			 
 		}
 		 fees.setFirstSemesterFees(firstSemesterFees);
-		 fees.setSecondSemesterFees(firstSemesterFees);
-		 fees.setHotelFees(firstSemesterFees);
-		 fees.setTransportFees(firstSemesterFees);
+		 fees.setSecondSemesterFees(secondSemesterFees);
+		 fees.setHotelFees(hostelFees);
+		 fees.setTransportFees(transportFees);
 		 connection.close();
 		 return fees;
 		 

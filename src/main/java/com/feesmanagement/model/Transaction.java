@@ -3,13 +3,14 @@ package com.feesmanagement.model;
 import java.sql.Date;
 
 public class Transaction {
-	private String transactionId;
+	
 	private String paidAmount;
 	private Date paidOn;
-	public String getTransactionId() {
+	private int transactionId;
+	public int getTransactionId() {
 		return transactionId;
 	}
-	public void setTransactionId(String transactionId) {
+	public void setTransactionId(int transactionId) {
 		this.transactionId = transactionId;
 	}
 	public String getPaidAmount() {

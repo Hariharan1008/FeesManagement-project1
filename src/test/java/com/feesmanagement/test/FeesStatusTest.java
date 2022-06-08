@@ -3,6 +3,7 @@ package com.feesmanagement.test;
 import java.util.Scanner;
 
 import com.feesmanagement.dao.FeesStatusDao;
+import com.feesmanagement.model.FeesStructure;
 
 public class FeesStatusTest {
 
@@ -11,7 +12,8 @@ public class FeesStatusTest {
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter your mail");
 		String email=sc.next();
-		FeesStatusDao.myFees(email);
+		FeesStructure fee=FeesStatusDao.myFees(email);
+		
 
 	}
 

@@ -19,7 +19,7 @@ public class TotalAndPaidFeesFinder {
 		PreparedStatement statement=null;
 	    ResultSet rs = null;
 	    connection=ConnectionUtil.databaseConnection();
-		String query = "SELECT * FROM Fees_Admin WHERE Email=?";
+		String query = "SELECT Total_Fees,Fees_paid,Fees_Pending FROM Fees_Admin WHERE Email=?";
 		statement = connection.prepareStatement(query);
         statement.setString(1, email);  
         rs = statement.executeQuery();

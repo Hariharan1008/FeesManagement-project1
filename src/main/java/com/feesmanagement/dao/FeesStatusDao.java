@@ -4,8 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import com.feesmanagement.model.FeesStructure;
+
 public class FeesStatusDao {
-	public static void myFees(String email) throws Exception
+	public static FeesStructure myFees(String email) throws Exception
 	{
 		Connection connection;
 	    PreparedStatement statement;
@@ -18,20 +20,18 @@ public class FeesStatusDao {
 		String totalFees=null;
 		String feesPaid=null;
 		String feesPending=null;
+		FeesStructure fee=new FeesStructure();
 		if(rs.next())
 		{
 			totalFees=rs.getString("Total_Fees");
 			feesPaid=rs.getString("Fees_paid");
 			feesPending=rs.getString("Fees_Pending");
-			 
+			fee.setTotalFees(totalFees);
+			fee.setFeesPaid(feesPaid);
+			fee.setFeesPending(feesPending); 
 		}
-		   System.out.println("Total_Fees    = "+totalFees);
-		   System.out.println("Fees_paid     = "+feesPaid);
-		   System.out.println("Fees_Pending  = "+feesPending);
-		   if(Integer.parseInt(feesPaid)==Integer.parseInt(totalFees))
-		   {
-			   System.out.println("You paid your fees fully!!...");
-		   }
+		return fee;
+		
 	}
 
 }

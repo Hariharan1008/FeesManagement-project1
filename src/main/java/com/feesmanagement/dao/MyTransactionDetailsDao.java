@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.feesmanagement.model.ResultApp;
 import com.feesmanagement.model.Transaction;
 
 public class MyTransactionDetailsDao {
@@ -18,18 +17,21 @@ public class MyTransactionDetailsDao {
 		Connection connection=ConnectionUtil.databaseConnection();
 		PreparedStatement statement;
 		ResultSet result=null;
-		String query="select Paid_Amount,Paid_On from Transaction_Details where email=?";
+		String query="select Transaction_Id,Paid_Amount,Paid_On from Transaction_Details where email=?";
 		statement=connection.prepareStatement(query);
 		statement.setString(1, email);
 		result=statement.executeQuery();
 		Transaction transaction=null;
+		int transactionId=0;
 		String paid=null;
 		Date date=null;
 		while(result.next())
 		{
 			transaction=new Transaction();
+			transactionId=result.getInt("Transaction_Id");
 			paid=result.getString("Paid_Amount");
 			date=result.getDate("Paid_On");
+			transaction.setTransactionId(transactionId);
 			transaction.setPaidAmount(paid);
 			transaction.setPaidOn(date);
 			list.add(transaction);
